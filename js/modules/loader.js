@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const loader=document.getElementById('app-loader');if(!loader)return;const done=()=>loader.classList.add('done');window.addEventListener('load',()=>setTimeout(done,450));setTimeout(done,1600)});

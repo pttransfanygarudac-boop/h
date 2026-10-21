@@ -1,0 +1,2 @@
+window.RenAILanguage={init(){document.querySelectorAll('[data-language]').forEach(s=>{try{s.value=localStorage.getItem('renai-language')||'id'}catch{}s.addEventListener('change',()=>{try{localStorage.setItem('renai-language',s.value)}catch{}window.RenAIUI.toast('Preferensi bahasa disimpan. Terjemahan UI penuh belum diaktifkan.')})})}};
+document.addEventListener('DOMContentLoaded',()=>window.RenAILanguage.init());
