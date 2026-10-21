@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070b12"><title>RenAI Live Call · RENAI Visionary</title>
+<link rel="icon" href="assets/icons/renai.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base/variables.css"><link rel="stylesheet" href="css/base/reset.css"><link rel="stylesheet" href="css/base/type.css"><link rel="stylesheet" href="css/components/ui.css"><link rel="stylesheet" href="css/pages/live.css"><link rel="stylesheet" href="css/animations.css">
+<style>
+.live-shell{min-height:100vh;display:flex;flex-direction:column;max-width:1100px}.live-top{align-items:center}.live-top h1{margin:5px 0 0}.call-stage{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:900px;width:100%;margin:0 auto}.live-screen{min-height:340px;aspect-ratio:16/9}.live-controls{gap:22px;padding:24px 8px 14px}.call-action{display:flex;flex-direction:column;align-items:center;gap:8px;border:0;background:transparent;color:var(--text);font:inherit;font-size:11px;cursor:pointer;min-width:66px}.round-control{width:58px;height:58px;font-size:21px;cursor:pointer}.round-control.danger{background:#e5484d;border-color:#e5484d;color:#fff;width:66px;height:66px}.round-control.muted{background:#5b2432;border-color:#9b4558}.audio-menu-wrap{position:relative}.audio-menu{position:absolute;z-index:10;bottom:80px;left:50%;transform:translateX(-50%);width:min(290px,80vw);padding:15px;background:#0d1623;border:1px solid #2d4b65;border-radius:14px;box-shadow:0 18px 60px #0009;color:#edf7ff;text-align:left}.audio-menu label{display:block;font-size:11px;margin-bottom:8px;color:#a8bfd1}.audio-menu select{width:100%;padding:11px;border-radius:9px;background:#17283a;color:#fff;border:1px solid #38536d}.audio-menu p{font-size:10px;line-height:1.5;color:#a8bfd1;margin-top:10px}.call-status-line{text-align:center;color:var(--muted);font-size:11px;margin-top:6px}.call-bottom{display:flex;justify-content:center;margin-top:10px}.call-bottom a{color:var(--muted);font-size:11px}.call-note{max-width:700px;margin:10px auto 0;text-align:center;font-size:10px;line-height:1.65;color:var(--muted)}.camera-placeholder.hidden{display:none!important}
+@media(max-width:600px){.live-shell{padding:14px}.live-screen{min-height:280px;aspect-ratio:3/4}.live-controls{gap:12px;padding-top:22px}.round-control{width:52px;height:52px}.round-control.danger{width:60px;height:60px}.call-action{min-width:58px;font-size:10px}}
+</style></head>
+<body data-theme="dark">
+<div id="app-loader" class="loader-screen"><div class="loader-inner"><div class="spg-loader"><i></i><i></i><i></i></div><div class="loader-logo">REN<span>AI</span></div><div class="loader-caption">INITIALIZING EXPERIENCE</div></div></div>
+<div class="live-shell">
+<header class="live-top"><div><a href="companion.html" class="live-back">← Kembali ke chat</a><p class="eyebrow" style="margin-top:12px">RENAI / VOICE INTERACTION</p><h1 style="font-size:clamp(24px,4vw,34px)">RenAI Companion</h1></div><span class="tag tag-blue" id="call-status">READY</span></header>
+<main class="call-stage">
+<div class="live-screen"><video id="camera-video" autoplay muted playsinline></video><div class="camera-placeholder"><div class="iconbox" style="width:64px;height:64px;font-size:26px;margin:0 auto 17px">◎</div><h2>Your world, in view.</h2><p class="muted" style="font-size:11px">Mulai panggilan untuk mengaktifkan pratinjau kamera.</p><span class="tag">CAMERA OFF</span></div><div class="live-overlay-top"><span class="live-pill" id="camera-status">● CAMERA OFF</span><span class="live-pill">RENAI VISION / 01</span></div></div>
+<div class="call-status-line" id="call-status-line">Siap memulai sesi · Mode demo</div>
+<div class="live-controls">
+<button class="call-action" id="mic-toggle" aria-label="Bisukan mikrofon"><span class="round-control" id="mic-icon">♩</span><span id="mic-label">Bisukan mikrofon</span></button>
+<div class="audio-menu-wrap"><button class="call-action" id="audio-menu-toggle" aria-label="Pilih keluaran audio" aria-expanded="false"><span class="round-control">◖))</span><span>Audio</span></button>
+<div class="audio-menu hidden" id="audio-menu"><label for="audio-route">Keluaran suara</label><select id="audio-route"><option value="auto">Otomatis · ikuti Android</option><option value="speaker">Speaker ponsel</option><option value="bluetooth">Bluetooth terhubung</option><option value="wired">Headset kabel / USB-C</option><option value="earpiece">Earpiece / speaker telepon</option></select><p id="audio-route-note">Android dapat menentukan jalur audio. Pilihan ini adalah preferensi UI; pemilihan jalur fisik bergantung pada dukungan browser dan sistem.</p></div></div>
+<button class="call-action" id="end-call" aria-label="Tutup telepon"><span class="round-control danger">☎</span><span>Tutup telepon</span></button>
+</div>
+<div class="call-bottom"><a href="companion.html">Kembali ke chat tanpa mengakhiri sesi demo</a></div>
+<p class="call-note">Prototype UI: kamera dapat menampilkan pratinjau lokal setelah izin diberikan. Mikrofon dapat meminta izin dan dibisukan, tetapi suara AI real-time belum tersambung. Browser seluler mungkin tidak mengizinkan pemilihan speaker Bluetooth, headset, atau earpiece secara langsung.</p>
+</main>
+<footer class="footer"><span>RENAI GVTL · PROTOTYPE 04</span><span>NO LIVE AI CONNECTION</span></footer></div>
+<div id="toast-region" class="toast-region" aria-live="polite"></div>
+<script src="js/modules/ui.js"></script><script src="js/modules/loader.js"></script><script src="js/pages/companion.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const micBtn=document.getElementById('mic-toggle'),micIcon=document.getElementById('mic-icon'),micLabel=document.getElementById('mic-label'),audioBtn=document.getElementById('audio-menu-toggle'),audioMenu=document.getElementById('audio-menu'),audioRoute=document.getElementById('audio-route'),note=document.getElementById('audio-route-note');
+ let micStream=null,cameraStream=null,muted=false;
+ const status=document.getElementById('call-status'),line=document.getElementById('call-status-line');
+ const video=document.getElementById('camera-video'),placeholder=document.querySelector('.camera-placeholder');
+ const cameraStatus=document.getElementById('camera-status');
+ (async()=>{
+  if(!navigator.mediaDevices?.getUserMedia){line.textContent='Browser tidak mendukung kamera. Sesi tetap dalam mode demo.';return;}
+  try{
+   cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'user'}},audio:false});
+   video.srcObject=cameraStream;video.classList.add('active');placeholder?.classList.add('hidden');
+   cameraStatus.textContent='LIVE PREVIEW';status.textContent='DEMO ACTIVE';line.textContent='Pratinjau kamera aktif secara lokal · AI belum tersambung';
+  }catch(e){
+   line.textContent=e.name==='NotAllowedError'?'Izin kamera ditolak. Kamu tetap bisa melihat antarmuka panggilan.':'Kamera belum tersedia. Kamu tetap bisa memakai antarmuka demo.';
+  }
+ })();
+ micBtn?.addEventListener('click',async()=>{
+  if(!micStream){
+   if(!navigator.mediaDevices?.getUserMedia){RenAIUI.toast('Browser ini tidak mendukung akses mikrofon.');return;}
+   try{micStream=await navigator.mediaDevices.getUserMedia({audio:true,video:false});muted=false;micStream.getAudioTracks().forEach(t=>t.enabled=true);RenAIUI.toast('Mikrofon diizinkan. Audio belum dikirim ke AI.');}
+   catch(e){RenAIUI.toast(e.name==='NotAllowedError'?'Izin mikrofon ditolak. Periksa izin browser.':'Mikrofon tidak dapat diaktifkan.');return;}
+  }else{muted=!muted;micStream.getAudioTracks().forEach(t=>t.enabled=!muted);}
+  micIcon.textContent=muted?'×':'♩';micIcon.classList.toggle('muted',muted);micLabel.textContent=muted?'Aktifkan mikrofon':'Bisukan mikrofon';
+ });
+ audioBtn?.addEventListener('click',()=>{audioMenu.classList.toggle('hidden');audioBtn.setAttribute('aria-expanded',String(!audioMenu.classList.contains('hidden')));});
+ audioRoute?.addEventListener('change',()=>{const labels={auto:'Otomatis: mengikuti pengaturan Android.',speaker:'Speaker ponsel dipilih sebagai preferensi.',bluetooth:'Bluetooth dipilih sebagai preferensi. Pastikan perangkat Bluetooth tersambung di Android.',wired:'Headset kabel / USB-C dipilih sebagai preferensi. Pastikan headset terpasang.',earpiece:'Earpiece dipilih sebagai preferensi jika perangkat mendukungnya.'};note.textContent=labels[audioRoute.value]+' Jalur audio fisik tetap dikelola Android/browser.';RenAIUI.toast('Preferensi audio diperbarui.');});
+ document.getElementById('end-call')?.addEventListener('click',()=>{if(micStream)micStream.getTracks().forEach(t=>t.stop());if(cameraStream)cameraStream.getTracks().forEach(t=>t.stop());location.href='companion.html';});
+ window.addEventListener('pagehide',()=>{if(micStream)micStream.getTracks().forEach(t=>t.stop());if(cameraStream)cameraStream.getTracks().forEach(t=>t.stop());});
+});
+</script></body></html>

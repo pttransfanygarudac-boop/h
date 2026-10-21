@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070b12">
+<title>RenAI Companion · RENAI Visionary</title>
+<link rel="icon" href="assets/icons/renai.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base/variables.css"><link rel="stylesheet" href="css/base/reset.css">
+<link rel="stylesheet" href="css/base/type.css"><link rel="stylesheet" href="css/components/ui.css">
+<link rel="stylesheet" href="css/layout/shell.css"><link rel="stylesheet" href="css/pages/dashboard.css">
+<link rel="stylesheet" href="css/pages/companion.css"><link rel="stylesheet" href="css/pages/settings.css">
+<link rel="stylesheet" href="css/animations.css"><link rel="stylesheet" href="css/responsive.css">
+<style>
+.chat-home{height:calc(100vh - 130px);min-height:500px;display:flex;flex-direction:column;max-width:1000px;margin:0 auto}
+.chat-home-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.chat-home-body{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:16px;padding:22px 4px}
+.welcome-card{margin:auto;text-align:center;max-width:520px;padding:20px}
+.welcome-orb{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:radial-gradient(circle at 35% 25%,#55e8ff,#1765bd 55%,#101b37);box-shadow:0 0 38px #188ce533;color:white;font-size:28px}
+.welcome-card h2{font-size:clamp(24px,4vw,34px);margin-bottom:10px}
+.welcome-card p{color:var(--muted);font-size:13px;line-height:1.7}
+.chat-home-log{display:flex;flex-direction:column;gap:12px}
+.chat-home-log .chat-bubble{font-size:13px;max-width:min(82%,650px);padding:13px 15px}
+.chat-composer-wrap{padding-top:12px;border-top:1px solid var(--border)}
+.chat-composer{display:flex;align-items:flex-end;gap:8px;padding:8px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+.chat-composer textarea{flex:1;min-width:0;resize:vertical;max-height:130px;min-height:44px;border:0;outline:0;background:transparent;color:var(--text);padding:12px;font:inherit;font-size:13px}
+.chat-composer .btn{min-height:42px}
+.composer-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 4px 0}
+.chat-shortcuts{display:flex;gap:8px;flex-wrap:wrap}
+.call-launch{display:inline-flex;align-items:center;gap:7px}
+.chat-demo-note{font-size:10px;color:var(--muted)}
+@media(max-width:700px){.page{padding:16px}.chat-home{height:calc(100dvh - 115px);min-height:420px}.chat-home-head{padding-bottom:12px}.chat-home-body{padding:12px 0}.welcome-card{padding:10px}.chat-composer-wrap{padding-top:8px}.composer-bottom{align-items:flex-start;flex-direction:column}.chat-home-log .chat-bubble{max-width:92%}}
+</style>
+</head>
+<body data-theme="dark">
+<div id="app-loader" class="loader-screen"><div class="loader-inner"><div class="spg-loader"><i></i><i></i><i></i></div><div class="loader-logo">REN<span>AI</span></div><div class="loader-caption">INITIALIZING EXPERIENCE</div></div></div>
+<div class="app-shell">
+<aside class="sidebar">
+<a class="brand" href="companion.html"><span class="brand-symbol"><i></i><i></i><i></i></span>REN<b>AI</b></a>
+<div class="nav-label">WORKSPACE</div>
+<nav class="nav">
+<a class="" href="app.html"><span class="navico">⌂</span>Dashboard</a>
+<a class="active" href="companion.html"><span class="navico">◎</span>RenAI Companion</a>
+<a class="" href="settings.html"><span class="navico">⚙</span>Pengaturan</a>
+</nav>
+<div class="side-bottom"><div class="mini-card"><span class="tag tag-blue">PROTOTYPE 04</span><p>Chat-first UI · AI backend belum terhubung.</p></div>
+<a href="#" data-logout class="nav" style="display:flex;padding:10px 12px;color:var(--muted);font-size:11px">↪ Keluar</a>
+<div class="user-row"><div class="avatar" data-profile-initial>P</div><div><strong data-profile-name>Pengguna</strong><small>Prototype account</small></div></div>
+</div></aside><div class="overlay"></div>
+<main class="main">
+<header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="btn mobile-menu" aria-label="Buka menu">☰</button><div class="breadcrumb"><span style="color:var(--muted)">RENAI /</span> Companion</div></div>
+<div style="display:flex;align-items:center;gap:10px"><span class="tag tag-blue">● DEMO MODE</span><a href="settings.html#profile" class="avatar" data-profile-initial>P</a></div></header>
+<div class="page">
+<section class="chat-home">
+<div class="chat-home-head"><div><p class="eyebrow">RENAI / VISIONARY</p><h1 style="font-size:clamp(22px,3vw,30px)">RenAI Companion</h1></div>
+<a href="live.html" class="btn btn-primary call-launch"><span>☎</span> Mulai panggilan</a></div>
+<div class="chat-home-body" id="chat-home-body">
+<div class="welcome-card" id="chat-welcome"><div class="welcome-orb">✦</div><h2>Halo, <span class="accent" data-profile-name>Pengguna</span>.</h2><p>Ada yang ingin kamu bicarakan? Kamu bisa mulai dengan mengetik pesan, atau beralih ke voice interaction kapan saja.</p>
+<div class="chat-shortcuts" style="justify-content:center;margin-top:18px"><a href="live.html" class="btn">☎ Voice / Live interaction</a><a href="history.html" class="btn">Riwayat chat</a></div></div>
+<div class="chat-home-log" id="chat-home-log"></div>
+</div>
+<div class="chat-composer-wrap"><form id="main-chat-form" class="chat-composer"><textarea id="main-chat-input" rows="1" maxlength="2000" placeholder="Ketik pesan untuk RenAI..." aria-label="Tulis pesan"></textarea><button type="submit" class="btn btn-primary" aria-label="Kirim pesan">↑</button></form>
+<div class="composer-bottom"><span class="chat-demo-note">Mode prototype. Pesan belum dikirim ke model AI.</span><div class="chat-shortcuts"><a class="btn btn-sm" href="live.html">☎ Telepon / Voice</a><a class="btn btn-sm" href="settings.html#voice">⚙ Pengaturan suara</a></div></div></div>
+</section>
+<footer class="footer"><span>© <span data-current-year>2026</span> RENAI GVTL</span><span>VISIONARY PROTOTYPE · AI BACKEND BELUM TERHUBUNG</span></footer>
+</div></main></div>
+<div id="toast-region" class="toast-region" aria-live="polite"></div>
+<script src="js/modules/ui.js"></script><script src="js/modules/auth.js"></script><script src="js/modules/shell.js"></script><script src="js/modules/loader.js"></script><script src="js/modules/theme.js"></script><script src="js/modules/language.js"></script><script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const form=document.getElementById('main-chat-form'),input=document.getElementById('main-chat-input'),log=document.getElementById('chat-home-log'),welcome=document.getElementById('chat-welcome');
+ form?.addEventListener('submit',e=>{
+  e.preventDefault();const value=input.value.trim();if(!value)return;
+  welcome?.classList.add('hidden');
+  const user=document.createElement('div');user.className='chat-bubble user';user.textContent=value;log.appendChild(user);input.value='';
+  const body=document.getElementById('chat-home-body');body.scrollTop=body.scrollHeight;
+  setTimeout(()=>{const reply=document.createElement('div');reply.className='chat-bubble';reply.textContent='Pesan diterima dalam mode demo. Koneksi model AI belum diaktifkan.';log.appendChild(reply);body.scrollTop=body.scrollHeight;},250);
+ });
+});
+</script>
+</body></html>
